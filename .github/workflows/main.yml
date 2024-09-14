@@ -1,0 +1,26 @@
+name: Backup my Outline wiki
+
+on:
+  schedule:
+    # Cron expression for snapshot frequency (default: every 4 hours)
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  deploy_snapshots:
+    # Use a reusable workflow from https://github.com/zensharp/outline-mirror
+    uses: zensharp/outline-mirror/.github/workflows/deploy.yml@main
+    strategy:
+      matrix:
+        ENVIRONMENT:
+          # Replace this list with *your* environment names
+          - getoutline.com
+          - wiki.company.org
+          - docs.outline.net
+    with:
+      ENVIRONMENT: ${{ matrix.ENVIRONMENT }}
+    secrets:
+      OUTLINE_INSTANCE_URL: ${{ secrets.OUTLINE_INSTANCE_URL }}
+      OUTLINE_API_KEY: ${{ secrets.OUTLINE_API_KEY }}
+      OUTPUT_REPO_URL: ${{ secrets.OUTPUT_REPO_URL }}
+      OUTPUT_SSH_KEY: ${{ secrets.OUTPUT_SSH_KEY }}
