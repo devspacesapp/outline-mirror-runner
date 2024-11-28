@@ -14,7 +14,7 @@ jobs:
           - breegull
           - redmeat
           #- starcourt
-          - sideshow
+          #0- sideshow
     with:
       ENVIRONMENT: ${{ matrix.ENVIRONMENT }}
     secrets:
