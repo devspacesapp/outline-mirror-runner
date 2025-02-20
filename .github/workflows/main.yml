@@ -13,7 +13,7 @@ jobs:
         ENVIRONMENT:
           - breegull
           - redmeat
-          - ballpit
+          #- ballpit
     with:
       ENVIRONMENT: ${{ matrix.ENVIRONMENT }}
     secrets:
