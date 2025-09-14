@@ -12,6 +12,7 @@ jobs:
       matrix:
         ENVIRONMENT:
           - breegull
+          - starcourt
           ##- redmeat
           ##- ballpit
     with:
